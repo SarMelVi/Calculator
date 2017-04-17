@@ -3,47 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <title>Calculator</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
 
-<input type="number">
-<input type="text">
-<input type="number">
+<input id = "left" type="number">
+<input id = "center" type="text">
+<input id = "right" type="number">
 
 <br>
 
-<a class="btn btn-default" href="#" role="button">1</a>
-<button class="btn btn-default" type="submit">2</button>
-<input class="btn btn-default" type="button" value="3">
-<input class="btn btn-default" type="submit" value="+">
+<button id = "one" class="btn btn-default number" type="button">1</button>
+<button id = "two" class="btn btn-default number " type="button">2</button>
+<button id = "three" class="btn btn-default number" type="button">3</button>
+<button id = "add" class="btn btn-default" type="button">+</button>
 <br>
 
-<a class="btn btn-default" href="#" role="button">4</a>
-<button class="btn btn-default" type="submit">5</button>
-<input class="btn btn-default" type="button" value="6">
-<input class="btn btn-default" type="submit" value="-">
+<button id = "four" class="btn btn-default number" type="button">4</button>
+<button id = "five" class="btn btn-default number" type="button">5</button>
+<button id = "six" class="btn btn-default number" type="button">6</button>
+<button id = "minus" class="btn btn-default" type="button">-</button>
 <br>
 
-<a class="btn btn-default" href="#" role="button">7</a>
-<button class="btn btn-default" type="submit">8</button>
-<input class="btn btn-default" type="button" value="9">
-<input class="btn btn-default" type="submit" value="*">
+<button id = "seven" class="btn btn-default number" type="button">7</button>
+<button id = "eight" class="btn btn-default number" type="button">8</button>
+<button id = "nine" class="btn btn-default number" type="button">9</button>
+<button id = "multiply" class="btn btn-default" type="button">*</button>
 <br>
 
-<a class="btn btn-default" href="#" role="button">C</a>
-<button class="btn btn-default" type="submit">0</button>
-<input class="btn btn-default" type="button" value="=">
-<input class="btn btn-default" type="submit" value="/">
+<button id = "zero" class="btn btn-default number" type="button">0</button>
+<button id = "clear" class="btn btn-default" type="button">C</button>
+<button id = "equals" class="btn btn-default" type="button">=</button>
+<button id = "divide" class="btn btn-default" type="button">/</button>
+
+<script>
+    (function () {
+        "use strict";
+        console.log("test");
+
+        var input1 = document.getElementById("left");
+        var input2 = document.getElementById("center");
+        var input3 = document.getElementById("right");
+
+        var onebtn = document.getElementById("one");
+        var twobtn = document.getElementById("two");
+        var threebtn = document.getElementById("three");
+        var addbtn = document.getElementById("add");
+
+        var fourbtn = document.getElementById("four");
+        var fivebtn = document.getElementById("five");
+        var sixbtn = document.getElementById("six");
+        var minusbtn = document.getElementById("minus");
+
+        var sevenbtn = document.getElementById("seven");
+        var eightbtn = document.getElementById("eight");
+        var ninebtn = document.getElementById("nine");
+        var multiplybtn = document.getElementById("multiply");
+
+        var zerobtn = document.getElementById("zero");
+        var clearbtn = document.getElementById("clear");
+        var equalsbtn = document.getElementById("equals");
+        var dividebtn = document.getElementById("divide");
+
+        var numbersButtons = document.getElementsByClassName("number");
+        console.log(numbersButtons);
+
+        for (var i = 0; i < numbersButtons.length; i++) {
+            numbersButtons[i].addEventListener('click', function(){
+
+                if (this.innerText == onebtn.innerText){
+                    input1.value = 1;
+                }
+
+                if (this.innerText == twobtn.innerText){
+                    input1.value = 2;
+                }
+
+                if (this.innerText == threebtn.innerText){
+                    input1.value = 3;
+                }
+
+                if (this.innerText == fourbtn.innerText){
+                    input1.value = 4;
+                }
+
+                if (this.innerText == fivebtn.innerText){
+                    input1.value = 5;
+                }
+
+                if (this.innerText == sixbtn.innerText){
+                    input1.value = 6;
+                }
+
+                if (this.innerText == sevenbtn.innerText){
+                    input1.value = 7;
+                }
+
+                if (this.innerText == eightbtn.innerText){
+                    input1.value = 8;
+                }
+
+                if (this.innerText == ninebtn.innerText){
+                    input1.value = 9;
+                }
+
+                if (this.innerText == zerobtn.innerText){
+                    input1.value = 0;
+                }
+            } )
+
+        }
+
+      //  numbersButtons.addEventListener("click", FUNCTION);
+
+        var numberLeftInput = function(){
 
 
 
+        };
+
+
+
+
+
+    /* Notes
+        click on number goes to left input
+        click on operator click will add symbol in center input and triggers number click to go to the right input field
+        = button provides answer and is displayed on left input
+            also clears center and right inputs
+        If statement - if user enters a number it overrides the answer in the left input
+           But if user enters an operant then the answer stays in left input and now numbers will be entered in the right input
+           the calculations will continue to accrue until clear button is clicked
+        clear button will reset all fields to blank
+
+        Functions that will be needed -
+
+        Use statement for when a number button is pressed it will then go in to the left input box
+
+        Put things in all input boxes
+
+        */
+
+
+
+
+    })();
+
+</script>
 </body>
+
 </html>
