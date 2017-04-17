@@ -65,134 +65,186 @@
         var equalsbtn = document.getElementById("equals");
         var dividebtn = document.getElementById("divide");
 
+        input2.value = null;
+
+        var trueornot = true;
+
+
         var numbersButtons = document.getElementsByClassName("number");
         console.log(numbersButtons);
-
-        for (var i = 0; i < numbersButtons.length; i++) {
-            numbersButtons[i].addEventListener('click', function(){
-
-                if (this.innerText == onebtn.innerText){
-                    input1.value = input1.value + "" +  1;
-                }
-
-                if (this.innerText == twobtn.innerText){
-                    input1.value = input1.value + "" +  2;
-                }
-
-                if (this.innerText == threebtn.innerText){
-                    input1.value = input1.value + "" +  3;
-                }
-
-                if (this.innerText == fourbtn.innerText){
-                    input1.value = input1.value + "" +  4;
-                }
-
-                if (this.innerText == fivebtn.innerText){
-                    input1.value = input1.value + "" +  5;
-                }
-
-                if (this.innerText == sixbtn.innerText){
-                    input1.value = input1.value + "" +  6;
-                }
-
-                if (this.innerText == sevenbtn.innerText){
-                    input1.value = input1.value + "" +  7;
-                }
-
-                if (this.innerText == eightbtn.innerText){
-                    input1.value = input1.value + "" +  8;
-                }
-
-                if (this.innerText == ninebtn.innerText){
-                    input1.value = input1.value + "" +  9;
-                }
-
-                if (this.innerText == zerobtn.innerText){
-                    input1.value = input1.value + "" +  0;
-                }
-            } )
-
-        }
-
-        for (var i = 0; i < numbersButtons.length; i++) {
-            numbersButtons[i].addEventListener('click', function(){
-
-                if (this.innerText == onebtn.innerText){
-                    input3.value = input3.value + "" +  1;
-                }
-
-                if (this.innerText == twobtn.innerText){
-                    input3.value = input3.value + "" +  2;
-                }
-
-                if (this.innerText == threebtn.innerText){
-                    input3.value = input3.value + "" +  3;
-                }
-
-                if (this.innerText == fourbtn.innerText){
-                    input3.value = input3.value + "" +  4;
-                }
-
-                if (this.innerText == fivebtn.innerText){
-                    input3.value = input3.value + "" +  5;
-                }
-
-                if (this.innerText == sixbtn.innerText){
-                    input3.value = input3.value + "" +  6;
-                }
-
-                if (this.innerText == sevenbtn.innerText){
-                    input3.value = input3.value + "" +  7;
-                }
-
-                if (this.innerText == eightbtn.innerText){
-                    input3.value = input3.value + "" +  8;
-                }
-
-                if (this.innerText == ninebtn.innerText){
-                    input3.value = input3.value + "" +  9;
-                }
-
-                if (this.innerText == zerobtn.innerText){
-                    input3.value = input3.value + "" +  0;
-                }
-            } )
-
-        }
-
-
-
-      //  numbersButtons.addEventListener("click", FUNCTION);
-
-        var numberLeftInput = function(){
-
-
-
-        };
 
         var operatorsButtons = document.getElementsByClassName("operator");
         console.log(operatorsButtons);
 
         for (var i = 0; i < operatorsButtons.length; i++) {
-            operatorsButtons[i].addEventListener('click', function() {
+            console.log("i " + i);
 
-                if (this.innerText == addbtn.innerText) {
+            operatorsButtons[i].addEventListener('click', function () {
+
+                trueornot = false;
+                console.log("operator " + trueornot);
+                if (this.innerText === addbtn.innerText) {
+                    console.log("logged +");
                     input2.value = "+";
+
                 }
 
-                if (this.innerText == minusbtn.innerText) {
+                else if (this.innerText === minusbtn.innerText) {
+                    console.log("logged -");
                     input2.value = "-";
+
                 }
 
-                if (this.innerText == multiplybtn.innerText) {
+                else if (this.innerText === multiplybtn.innerText) {
+                    console.log("logged mult");
                     input2.value = "*";
+
                 }
 
-                if (this.innerText == dividebtn.innerText) {
+                else if (this.innerText === dividebtn.innerText) {
+                    console.log("logged divide");
                     input2.value = "/";
+
+                }
+                else {
+                    console.log("else trigger");
+                }
+            })};
+
+                clearbtn.addEventListener("click", function () {
+                    trueornot = true;
+                    input1.value = null;
+                    input2.value = null;
+                    input3.value = null;
+                })
+
+
+
+
+
+        for (var i = 0; i < numbersButtons.length; i++) {
+            numbersButtons[i].addEventListener('click', function () {
+                if (!input2.value){
+
+                    if (this.innerText === onebtn.innerText) {
+                        input1.value = input1.value + "" + 1;
+                    }
+
+                    if (this.innerText === twobtn.innerText) {
+                        input1.value = input1.value + "" + 2;
+                    }
+
+                    if (this.innerText === threebtn.innerText) {
+                        input1.value = input1.value + "" + 3;
+                    }
+
+                    if (this.innerText === fourbtn.innerText) {
+                        input1.value = input1.value + "" + 4;
+                    }
+
+                    if (this.innerText === fivebtn.innerText) {
+                        input1.value = input1.value + "" + 5;
+                    }
+
+                    if (this.innerText === sixbtn.innerText) {
+                        input1.value = input1.value + "" + 6;
+                    }
+
+                    if (this.innerText === sevenbtn.innerText) {
+                        input1.value = input1.value + "" + 7;
+                    }
+
+                    if (this.innerText === eightbtn.innerText) {
+                        input1.value = input1.value + "" + 8;
+                    }
+
+                    if (this.innerText === ninebtn.innerText) {
+                        input1.value = input1.value + "" + 9;
+                    }
+
+                    if (this.innerText === zerobtn.innerText) {
+                        input1.value = input1.value + "" + 0;
+                    }
                 }
 
-            })}
+        else {
+                console.log("else" + trueornot);
+
+
+                if (this.innerText === onebtn.innerText) {
+                    input3.value = input3.value + "" + 1;
+                }
+
+                if (this.innerText === twobtn.innerText) {
+                    input3.value = input3.value + "" + 2;
+                }
+
+                if (this.innerText === threebtn.innerText) {
+                    input3.value = input3.value + "" + 3;
+                }
+
+                if (this.innerText === fourbtn.innerText) {
+                    input3.value = input3.value + "" + 4;
+                }
+
+                if (this.innerText === fivebtn.innerText) {
+                    input3.value = input3.value + "" + 5;
+                }
+
+                if (this.innerText === sixbtn.innerText) {
+                    input3.value = input3.value + "" + 6;
+                }
+
+                if (this.innerText === sevenbtn.innerText) {
+                    input3.value = input3.value + "" + 7;
+                }
+
+                if (this.innerText === eightbtn.innerText) {
+                    input3.value = input3.value + "" + 8;
+                }
+
+                if (this.innerText === ninebtn.innerText) {
+                    input3.value = input3.value + "" + 9;
+                }
+
+                if (this.innerText === zerobtn.innerText) {
+                    input3.value = input3.value + "" + 0;
+                }
+
+            }}
+            );
+
+
+        }
+
+
+
+
+        equalsbtn.addEventListener("click", function () {
+                var result = 0;
+                if (input2.value == "+") {
+                    result = input1.value + input3.value;
+                }
+                else if (input2.value == "-") {
+                    result = input1.value - input3.value;
+                }
+                else if (input2.value == "*") {
+                    result = input1.value * input3.value;
+                }
+
+                else if (input2.value == "/") {
+                    result = input1.value - input3.value;
+                }
+
+                else {
+                }
+
+                input1.value = result;
+                input2.value = null;
+                input3.value = null;
+            });
+
+
 
     /* Notes
         click on number goes to left input
