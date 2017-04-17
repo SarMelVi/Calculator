@@ -16,25 +16,25 @@
 <button id = "one" class="btn btn-default number" type="button">1</button>
 <button id = "two" class="btn btn-default number " type="button">2</button>
 <button id = "three" class="btn btn-default number" type="button">3</button>
-<button id = "add" class="btn btn-default" type="button">+</button>
+<button id = "add" class="btn btn-default operator" type="button">+</button>
 <br>
 
 <button id = "four" class="btn btn-default number" type="button">4</button>
 <button id = "five" class="btn btn-default number" type="button">5</button>
 <button id = "six" class="btn btn-default number" type="button">6</button>
-<button id = "minus" class="btn btn-default" type="button">-</button>
+<button id = "minus" class="btn btn-default operator" type="button">-</button>
 <br>
 
 <button id = "seven" class="btn btn-default number" type="button">7</button>
 <button id = "eight" class="btn btn-default number" type="button">8</button>
 <button id = "nine" class="btn btn-default number" type="button">9</button>
-<button id = "multiply" class="btn btn-default" type="button">*</button>
+<button id = "multiply" class="btn btn-default operator" type="button">*</button>
 <br>
 
 <button id = "zero" class="btn btn-default number" type="button">0</button>
 <button id = "clear" class="btn btn-default" type="button">C</button>
 <button id = "equals" class="btn btn-default" type="button">=</button>
-<button id = "divide" class="btn btn-default" type="button">/</button>
+<button id = "divide" class="btn btn-default operator" type="button">/</button>
 
 <script>
     (function () {
@@ -72,47 +72,95 @@
             numbersButtons[i].addEventListener('click', function(){
 
                 if (this.innerText == onebtn.innerText){
-                    input1.value = 1;
+                    input1.value = input1.value + "" +  1;
                 }
 
                 if (this.innerText == twobtn.innerText){
-                    input1.value = 2;
+                    input1.value = input1.value + "" +  2;
                 }
 
                 if (this.innerText == threebtn.innerText){
-                    input1.value = 3;
+                    input1.value = input1.value + "" +  3;
                 }
 
                 if (this.innerText == fourbtn.innerText){
-                    input1.value = 4;
+                    input1.value = input1.value + "" +  4;
                 }
 
                 if (this.innerText == fivebtn.innerText){
-                    input1.value = 5;
+                    input1.value = input1.value + "" +  5;
                 }
 
                 if (this.innerText == sixbtn.innerText){
-                    input1.value = 6;
+                    input1.value = input1.value + "" +  6;
                 }
 
                 if (this.innerText == sevenbtn.innerText){
-                    input1.value = 7;
+                    input1.value = input1.value + "" +  7;
                 }
 
                 if (this.innerText == eightbtn.innerText){
-                    input1.value = 8;
+                    input1.value = input1.value + "" +  8;
                 }
 
                 if (this.innerText == ninebtn.innerText){
-                    input1.value = 9;
+                    input1.value = input1.value + "" +  9;
                 }
 
                 if (this.innerText == zerobtn.innerText){
-                    input1.value = 0;
+                    input1.value = input1.value + "" +  0;
                 }
             } )
 
         }
+
+        for (var i = 0; i < numbersButtons.length; i++) {
+            numbersButtons[i].addEventListener('click', function(){
+
+                if (this.innerText == onebtn.innerText){
+                    input3.value = input3.value + "" +  1;
+                }
+
+                if (this.innerText == twobtn.innerText){
+                    input3.value = input3.value + "" +  2;
+                }
+
+                if (this.innerText == threebtn.innerText){
+                    input3.value = input3.value + "" +  3;
+                }
+
+                if (this.innerText == fourbtn.innerText){
+                    input3.value = input3.value + "" +  4;
+                }
+
+                if (this.innerText == fivebtn.innerText){
+                    input3.value = input3.value + "" +  5;
+                }
+
+                if (this.innerText == sixbtn.innerText){
+                    input3.value = input3.value + "" +  6;
+                }
+
+                if (this.innerText == sevenbtn.innerText){
+                    input3.value = input3.value + "" +  7;
+                }
+
+                if (this.innerText == eightbtn.innerText){
+                    input3.value = input3.value + "" +  8;
+                }
+
+                if (this.innerText == ninebtn.innerText){
+                    input3.value = input3.value + "" +  9;
+                }
+
+                if (this.innerText == zerobtn.innerText){
+                    input3.value = input3.value + "" +  0;
+                }
+            } )
+
+        }
+
+
 
       //  numbersButtons.addEventListener("click", FUNCTION);
 
@@ -122,9 +170,29 @@
 
         };
 
+        var operatorsButtons = document.getElementsByClassName("operator");
+        console.log(operatorsButtons);
 
+        for (var i = 0; i < operatorsButtons.length; i++) {
+            operatorsButtons[i].addEventListener('click', function() {
 
+                if (this.innerText == addbtn.innerText) {
+                    input2.value = "+";
+                }
 
+                if (this.innerText == minusbtn.innerText) {
+                    input2.value = "-";
+                }
+
+                if (this.innerText == multiplybtn.innerText) {
+                    input2.value = "*";
+                }
+
+                if (this.innerText == dividebtn.innerText) {
+                    input2.value = "/";
+                }
+
+            })}
 
     /* Notes
         click on number goes to left input
