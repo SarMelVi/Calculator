@@ -68,6 +68,8 @@
         input2.value = null;
 
         var trueornot = true;
+        var buttonNumber = 0;
+
 
 
         var numbersButtons = document.getElementsByClassName("number");
@@ -80,7 +82,7 @@
             console.log("i " + i);
 
             operatorsButtons[i].addEventListener('click', function () {
-
+                buttonNumber = "";
                 trueornot = false;
                 console.log("operator " + trueornot);
                 if (this.innerText === addbtn.innerText) {
@@ -116,6 +118,7 @@
                     input1.value = null;
                     input2.value = null;
                     input3.value = null;
+                    buttonNumber = "";
                 })
 
 
@@ -124,94 +127,60 @@
 
         for (var i = 0; i < numbersButtons.length; i++) {
             numbersButtons[i].addEventListener('click', function () {
-                if (!input2.value){
+
 
                     if (this.innerText === onebtn.innerText) {
-                        input1.value = input1.value + "" + 1;
+                        buttonNumber = buttonNumber + "" + 1;
                     }
 
                     if (this.innerText === twobtn.innerText) {
-                        input1.value = input1.value + "" + 2;
+                        buttonNumber = buttonNumber + "" + 2;
                     }
 
                     if (this.innerText === threebtn.innerText) {
-                        input1.value = input1.value + "" + 3;
+                        buttonNumber = buttonNumber + "" + 3;
                     }
 
                     if (this.innerText === fourbtn.innerText) {
-                        input1.value = input1.value + "" + 4;
+                        buttonNumber = buttonNumber + "" + 4;
                     }
 
                     if (this.innerText === fivebtn.innerText) {
-                        input1.value = input1.value + "" + 5;
+                        buttonNumber = buttonNumber + "" + 5;
                     }
 
                     if (this.innerText === sixbtn.innerText) {
-                        input1.value = input1.value + "" + 6;
+                        buttonNumber = buttonNumber + "" + 6;
+                        console.log(buttonNumber);
                     }
 
                     if (this.innerText === sevenbtn.innerText) {
-                        input1.value = input1.value + "" + 7;
+                        buttonNumber = buttonNumber + "" + 7;
                     }
 
                     if (this.innerText === eightbtn.innerText) {
-                        input1.value = input1.value + "" + 8;
+                        buttonNumber = buttonNumber + "" + 8;
                     }
 
                     if (this.innerText === ninebtn.innerText) {
-                        input1.value = input1.value + "" + 9;
+                        buttonNumber = buttonNumber + "" +  9;
                     }
 
                     if (this.innerText === zerobtn.innerText) {
-                        input1.value = input1.value + "" + 0;
+                        buttonNumber = buttonNumber + "" + 0;
                     }
+
+
+                if (!input2.value){
+                        input1.value = parseInt(buttonNumber);
                 }
 
-        else {
-                console.log("else" + trueornot);
+                else {
+                        input3.value= parseInt(buttonNumber);
 
-
-                if (this.innerText === onebtn.innerText) {
-                    input3.value = input3.value + "" + 1;
                 }
 
-                if (this.innerText === twobtn.innerText) {
-                    input3.value = input3.value + "" + 2;
-                }
-
-                if (this.innerText === threebtn.innerText) {
-                    input3.value = input3.value + "" + 3;
-                }
-
-                if (this.innerText === fourbtn.innerText) {
-                    input3.value = input3.value + "" + 4;
-                }
-
-                if (this.innerText === fivebtn.innerText) {
-                    input3.value = input3.value + "" + 5;
-                }
-
-                if (this.innerText === sixbtn.innerText) {
-                    input3.value = input3.value + "" + 6;
-                }
-
-                if (this.innerText === sevenbtn.innerText) {
-                    input3.value = input3.value + "" + 7;
-                }
-
-                if (this.innerText === eightbtn.innerText) {
-                    input3.value = input3.value + "" + 8;
-                }
-
-                if (this.innerText === ninebtn.innerText) {
-                    input3.value = input3.value + "" + 9;
-                }
-
-                if (this.innerText === zerobtn.innerText) {
-                    input3.value = input3.value + "" + 0;
-                }
-
-            }}
+            }
             );
 
 
@@ -222,6 +191,10 @@
 
         equalsbtn.addEventListener("click", function () {
                 var result = 0;
+//
+//                input1.value = parseInt(input1.value);
+//                input3.value = parseInt(input3.value);
+                console.log("equals button " + input1.value);
                 if (input2.value == "+") {
                     result = input1.value + input3.value;
                 }
