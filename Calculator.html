@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Calculator</title>
+    <link rel="stylesheet" href="css/calculator.css">
 
 </head>
 <body>
@@ -16,12 +17,14 @@
 <button id="one" class="btn btn-default number" type="button">1</button>
 <button id="two" class="btn btn-default number " type="button">2</button>
 <button id="three" class="btn btn-default number" type="button">3</button>
+<button id="percent" class="btn default number" type="button">%</button>
 <button id="add" class="btn btn-default operator" type="button">+</button>
 <br>
 
 <button id="four" class="btn btn-default number" type="button">4</button>
 <button id="five" class="btn btn-default number" type="button">5</button>
 <button id="six" class="btn btn-default number" type="button">6</button>
+<button id="decimal" class="btn btn-default number" type="button">.</button>
 <button id="minus" class="btn btn-default operator" type="button">-</button>
 <br>
 
@@ -96,7 +99,7 @@
                 if (input3.value == 0 || input1.value == 0){
                 var errorMessage =  document.getElementById("errorMessage");
                 errorMessage.innerHTML = "Can't divide by zero";
-                    console.log("hitt this statemetn")
+
                 }
                 else {
                     result = left / right;
