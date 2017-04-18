@@ -45,6 +45,7 @@
         var input3 = document.getElementById("right");
 
         var btns = document.getElementsByClassName('number');
+        var trueornot = true;
 
         for (var i = 0; i < btns.length; i++) {
             btns[i].addEventListener("click", function () {
@@ -57,14 +58,56 @@
                 }
             })
         }
+        var clearbtn = document.getElementById("clear");
+                clearbtn.addEventListener("click", function () {
+                    trueornot = true;
+                    input1.value = "";
+                    input2.value = "";
+                    input3.value = "";
+
+                })
 
         var operBtns = document.getElementsByClassName("operator");
+
 
         for(var i = 0; i < operBtns.length; i++){
             operBtns[i].addEventListener("click", function () {
                 input2.value = this.innerText;
             })
         }
+        var equalsbtn = document.getElementById("equals");
+        equalsbtn.addEventListener("click", function () {
+            var result = 0;
+            var left = parseInt(input1.value);
+            var right = parseInt(input3.value);
+            console.log("equals button " + input1.value);
+            if (input2.value == "+") {
+                result = left + right;
+            }
+            else if (input2.value == "-") {
+                result = input1.value - input3.value;
+            }
+            else if (input2.value == "*") {
+                result = input1.value * input3.value;
+            }
+
+            else if (input2.value == "/") {
+                if (input3.value == 0){
+                    input1.innerHTML = "Can't divide by Zero";
+                }
+                else {
+                    result = left / right;
+                }
+            }
+
+            else {
+            }
+
+            input1.value = result;
+            input2.value = null;
+            input3.value = null;
+        });
+
 
 
 //        var onebtn = document.getElementById("one");
@@ -83,13 +126,13 @@
 //        var multiplybtn = document.getElementById("multiply");
 //
 //        var zerobtn = document.getElementById("zero");
-//        var clearbtn = document.getElementById("clear");
-        var equalsbtn = document.getElementById("equals");
+//
+ //
 //        var dividebtn = document.getElementById("divide");
 //
 //        input2.value = null;
 //
-//        var trueornot = true;
+//
 //        var buttonNumber = 0;
 
 
@@ -134,13 +177,7 @@
 //                }
 //            })};
 //
-//                clearbtn.addEventListener("click", function () {
-//                    trueornot = true;
-//                    input1.value = null;
-//                    input2.value = null;
-//                    input3.value = null;
-//                    buttonNumber = "";
-//                })
+
 
 
 //        for (var i = 0; i < numbersButtons.length; i++) {
@@ -205,34 +242,6 @@
 //        }
 
 
-        equalsbtn.addEventListener("click", function () {
-                var result = 0;
-//
-                var left = parseInt(input1.value);
-                var right = parseInt(input3.value);
-                console.log("equals button " + input1.value);
-                if (input2.value == "+") {
-                    result = left + right;
-                }
-                else if (input2.value == "-") {
-                    result = input1.value - input3.value;
-                }
-                else if (input2.value == "*") {
-                    result = input1.value * input3.value;
-                }
-
-                else if (input2.value == "/") {
-                    if (input3)
-                    result = left / right;
-                }
-
-                else {
-                }
-
-                input1.value = result;
-                input2.value = null;
-                input3.value = null;
-            });
 
 
         /* Notes
