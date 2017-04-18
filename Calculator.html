@@ -3,227 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <title>Calculator</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style rel="stylesheet">
+        body {
+            background-image: url("img/numbers-wallpaper.jpg");
 
+
+        }
+        .jumbotron {
+            margin-top: 10em;
+            margin-left: 30em;
+            width: 50%;
+            background-color: darkgray;
+        }
+        .container{
+            margin-left: 4em;
+        }
+        #buttonDisplay {
+            margin-left: 10.5em;
+
+        }
+        #buttonDisplay button{
+            width: 5em;
+            height: 5em;
+            margin-right: .7em;
+            margin-bottom: .7em;
+        }
+        #inputDisplay input {
+            width: 5.6em;
+            height: 2em;
+            font-size: 140%;
+
+        }
+        #inputDisplay {
+            margin-left: 10em;
+        }
+        h1 {
+            margin-left: 1.6em;
+            margin-bottom: .5em;
+            width: 6.9em;
+            background-color: whitesmoke;
+            border: groove .01em lightgrey;
+        }
+
+        #errorMessage {
+            background-color: lightcoral;
+            height: 2em;
+            width: 10em;
+            font-size: 2em;
+            text-align: center;
+            margin-left: 6em;
+            margin-bottom: 1em;
+            color: white;
+
+        }
+
+    </style>
 </head>
 <body>
+<div class="jumbotron">
+    <div class="container">
+        <h1>Calculate This!</h1>
+        <div id="errorMessage" class="hidden"></div>
+        <div id="inputDisplay">
+            <input id="left" type="number">
+            <input id="center" type="text">
+            <input id="right" type="number">
+        </div>
+        <br>
+        <div id = "buttonDisplay">
 
-<input id = "left" type="number">
-<input id = "center" type="text">
-<input id = "right" type="number">
+            <button id="zero" class="btn btn-default number" type="button">0</button>
+            <button id="clear" class="btn btn-default" type="button">C</button>
+            <button id="equals" class="btn btn-default" type="button">=</button>
+            <button id="divide" class="btn btn-default operator" type="button">/</button>
 
-<br>
+            <button id="four" class="btn btn-default number" type="button">4</button>
+            <button id="five" class="btn btn-default number" type="button">5</button>
+            <button id="six" class="btn btn-default number" type="button">6</button>
+            <button id="minus" class="btn btn-default operator" type="button">-</button>
+            <br>
 
-<button id = "one" class="btn btn-default number" type="button">1</button>
-<button id = "two" class="btn btn-default number " type="button">2</button>
-<button id = "three" class="btn btn-default number" type="button">3</button>
-<button id = "add" class="btn btn-default operator" type="button">+</button>
-<br>
+            <button id="seven" class="btn btn-default number" type="button">7</button>
+            <button id="eight" class="btn btn-default number" type="button">8</button>
+            <button id="nine" class="btn btn-default number" type="button">9</button>
+            <button id="multiply" class="btn btn-default operator" type="button">*</button>
+            <br>
 
-<button id = "four" class="btn btn-default number" type="button">4</button>
-<button id = "five" class="btn btn-default number" type="button">5</button>
-<button id = "six" class="btn btn-default number" type="button">6</button>
-<button id = "minus" class="btn btn-default operator" type="button">-</button>
-<br>
+            <button id="one" class="btn btn-default number" type="button">1</button>
+            <button id="two" class="btn btn-default number " type="button">2</button>
+            <button id="three" class="btn btn-default number" type="button">3</button>
+            <button id="add" class="btn btn-default operator" type="button">+</button>
+            <br>
 
-<button id = "seven" class="btn btn-default number" type="button">7</button>
-<button id = "eight" class="btn btn-default number" type="button">8</button>
-<button id = "nine" class="btn btn-default number" type="button">9</button>
-<button id = "multiply" class="btn btn-default operator" type="button">*</button>
-<br>
 
-<button id = "zero" class="btn btn-default number" type="button">0</button>
-<button id = "clear" class="btn btn-default" type="button">C</button>
-<button id = "equals" class="btn btn-default" type="button">=</button>
-<button id = "divide" class="btn btn-default operator" type="button">/</button>
+
+
+
+            <button id="zero" class="btn btn-default number" type="button">0</button>
+            <button id="clear" class="btn btn-default" type="button">C</button>
+            <button id="equals" class="btn btn-default" type="button">=</button>
+            <button id="divide" class="btn btn-default operator" type="button">/</button>
+
+        </div>
+    </div>
+</div>
 
 <script>
     (function () {
         "use strict";
         console.log("test");
-
         var input1 = document.getElementById("left");
         var input2 = document.getElementById("center");
         var input3 = document.getElementById("right");
 
-        var onebtn = document.getElementById("one");
-        var twobtn = document.getElementById("two");
-        var threebtn = document.getElementById("three");
-        var addbtn = document.getElementById("add");
-
-        var fourbtn = document.getElementById("four");
-        var fivebtn = document.getElementById("five");
-        var sixbtn = document.getElementById("six");
-        var minusbtn = document.getElementById("minus");
-
-        var sevenbtn = document.getElementById("seven");
-        var eightbtn = document.getElementById("eight");
-        var ninebtn = document.getElementById("nine");
-        var multiplybtn = document.getElementById("multiply");
-
-        var zerobtn = document.getElementById("zero");
-        var clearbtn = document.getElementById("clear");
-        var equalsbtn = document.getElementById("equals");
-        var dividebtn = document.getElementById("divide");
-
-        input2.value = null;
-
+        var btns = document.getElementsByClassName('number');
         var trueornot = true;
+        var errorMessage =  document.getElementById("errorMessage");
 
-
-        var numbersButtons = document.getElementsByClassName("number");
-        console.log(numbersButtons);
-
-        var operatorsButtons = document.getElementsByClassName("operator");
-        console.log(operatorsButtons);
-
-        for (var i = 0; i < operatorsButtons.length; i++) {
-            console.log("i " + i);
-
-            operatorsButtons[i].addEventListener('click', function () {
-
-                trueornot = false;
-                console.log("operator " + trueornot);
-                if (this.innerText === addbtn.innerText) {
-                    console.log("logged +");
-                    input2.value = "+";
-
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function () {
+                if (!input2.value) {
+                    input1.value += parseInt(this.innerText);
                 }
 
-                else if (this.innerText === minusbtn.innerText) {
-                    console.log("logged -");
-                    input2.value = "-";
-
-                }
-
-                else if (this.innerText === multiplybtn.innerText) {
-                    console.log("logged mult");
-                    input2.value = "*";
-
-                }
-
-                else if (this.innerText === dividebtn.innerText) {
-                    console.log("logged divide");
-                    input2.value = "/";
-
-                }
                 else {
-                    console.log("else trigger");
+                    input3.value += parseInt(this.innerText);
                 }
-            })};
-
-                clearbtn.addEventListener("click", function () {
-                    trueornot = true;
-                    input1.value = null;
-                    input2.value = null;
-                    input3.value = null;
-                })
-
-
-
-
-
-        for (var i = 0; i < numbersButtons.length; i++) {
-            numbersButtons[i].addEventListener('click', function () {
-                if (!input2.value){
-
-                    if (this.innerText === onebtn.innerText) {
-                        input1.value = input1.value + "" + 1;
-                    }
-
-                    if (this.innerText === twobtn.innerText) {
-                        input1.value = input1.value + "" + 2;
-                    }
-
-                    if (this.innerText === threebtn.innerText) {
-                        input1.value = input1.value + "" + 3;
-                    }
-
-                    if (this.innerText === fourbtn.innerText) {
-                        input1.value = input1.value + "" + 4;
-                    }
-
-                    if (this.innerText === fivebtn.innerText) {
-                        input1.value = input1.value + "" + 5;
-                    }
-
-                    if (this.innerText === sixbtn.innerText) {
-                        input1.value = input1.value + "" + 6;
-                    }
-
-                    if (this.innerText === sevenbtn.innerText) {
-                        input1.value = input1.value + "" + 7;
-                    }
-
-                    if (this.innerText === eightbtn.innerText) {
-                        input1.value = input1.value + "" + 8;
-                    }
-
-                    if (this.innerText === ninebtn.innerText) {
-                        input1.value = input1.value + "" + 9;
-                    }
-
-                    if (this.innerText === zerobtn.innerText) {
-                        input1.value = input1.value + "" + 0;
-                    }
-                }
-
-        else {
-                console.log("else" + trueornot);
-
-
-                if (this.innerText === onebtn.innerText) {
-                    input3.value = input3.value + "" + 1;
-                }
-
-                if (this.innerText === twobtn.innerText) {
-                    input3.value = input3.value + "" + 2;
-                }
-
-                if (this.innerText === threebtn.innerText) {
-                    input3.value = input3.value + "" + 3;
-                }
-
-                if (this.innerText === fourbtn.innerText) {
-                    input3.value = input3.value + "" + 4;
-                }
-
-                if (this.innerText === fivebtn.innerText) {
-                    input3.value = input3.value + "" + 5;
-                }
-
-                if (this.innerText === sixbtn.innerText) {
-                    input3.value = input3.value + "" + 6;
-                }
-
-                if (this.innerText === sevenbtn.innerText) {
-                    input3.value = input3.value + "" + 7;
-                }
-
-                if (this.innerText === eightbtn.innerText) {
-                    input3.value = input3.value + "" + 8;
-                }
-
-                if (this.innerText === ninebtn.innerText) {
-                    input3.value = input3.value + "" + 9;
-                }
-
-                if (this.innerText === zerobtn.innerText) {
-                    input3.value = input3.value + "" + 0;
-                }
-
-            }}
-            );
-
-
+            })
         }
+        var clearbtn = document.getElementById("clear");
+        clearbtn.addEventListener("click", function () {
+            errorMessage.setAttribute("class", "hidden");
+            trueornot = true;
+            input1.value = "";
+            input2.value = "";
+            input3.value = "";
+
+        })
+
+        var operBtns = document.getElementsByClassName("operator");
 
 
-
-
+        for(var i = 0; i < operBtns.length; i++){
+            operBtns[i].addEventListener("click", function () {
+                input2.value = this.innerText;
+            })
+        }
+        var equalsbtn = document.getElementById("equals");
         equalsbtn.addEventListener("click", function () {
-                var result = 0;
+            var result = 0;
+            var left = parseInt(input1.value);
+            var right = parseInt(input3.value);
+            errorMessage.setAttribute("class", "hidden");
+
+            if (!input1.value || !input3.value){
+                errorMessage.innerHTML = "Must Enter digits on left and right";
+                errorMessage.setAttribute("class", "show");
+                errorMessage.style.height = "3.5em";
+
+            }
+            else {
+
                 if (input2.value == "+") {
-                    result = input1.value + input3.value;
+                    result = left + right;
                 }
                 else if (input2.value == "-") {
                     result = input1.value - input3.value;
@@ -233,36 +177,27 @@
                 }
 
                 else if (input2.value == "/") {
-                    result = input1.value - input3.value;
+                    if (input3.value == 0 || input1.value == 0) {
+
+                        errorMessage.innerHTML = "Can't divide by zero";
+                        errorMessage.setAttribute("class", "show");
+                        errorMessage.style.height = "2em";
+
+                    }
+                    else {
+                        result = left / right;
+                    }
                 }
 
                 else {
                 }
+            }
 
-                input1.value = result;
-                input2.value = null;
-                input3.value = null;
-            });
+            input1.value = result;
+            input2.value = null;
+            input3.value = null;
+        });
 
-
-
-    /* Notes
-        click on number goes to left input
-        click on operator click will add symbol in center input and triggers number click to go to the right input field
-        = button provides answer and is displayed on left input
-            also clears center and right inputs
-        If statement - if user enters a number it overrides the answer in the left input
-           But if user enters an operant then the answer stays in left input and now numbers will be entered in the right input
-           the calculations will continue to accrue until clear button is clicked
-        clear button will reset all fields to blank
-
-        Functions that will be needed -
-
-        Use statement for when a number button is pressed it will then go in to the left input box
-
-        Put things in all input boxes
-
-        */
 
 
 
