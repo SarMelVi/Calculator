@@ -192,11 +192,11 @@
         equalsbtn.addEventListener("click", function () {
                 var result = 0;
 //
-//                input1.value = parseInt(input1.value);
-//                input3.value = parseInt(input3.value);
+                var left = parseInt(input1.value);
+                var right = parseInt(input3.value);
                 console.log("equals button " + input1.value);
                 if (input2.value == "+") {
-                    result = input1.value + input3.value;
+                    result = left + right;
                 }
                 else if (input2.value == "-") {
                     result = input1.value - input3.value;
@@ -206,7 +206,8 @@
                 }
 
                 else if (input2.value == "/") {
-                    result = input1.value - input3.value;
+                    if (input3)
+                    result = left / right;
                 }
 
                 else {
