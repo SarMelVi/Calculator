@@ -231,16 +231,16 @@
                         equalsEqualsNumber = left;
 
                         if (input2.value == "+") {
-                            calcPercent === false ? result = left + right : result = left + ((right / left) * 100);
+                            calcPercent === false ? result = left + right : result = left + ((right / 100.0) * left);
                             operator = "+";
 
                         }
                         else if (input2.value == "-") {
-                            calcPercent === false ? result = left - right : result = left - ((right / left) * 100);
+                            calcPercent === false ? result = left - right : result = left - ((right / 100.0) * left);
                             operator = "-";
                         }
                         else if (input2.value == "*") {
-                            calcPercent === false ? result = left * right : result = left * ((right / left) * 100);
+                            calcPercent === false ? result = left * right : result = left * (right / 100.0);
                             operator = "*";
                         }
 
@@ -253,7 +253,7 @@
                                 errorMessage.style.marginLeft = "20%";
                             }
                             else {
-                                calcPercent === false ? result = left / right : result = left / ((right / left) * 100);
+                                calcPercent === false ? result = left / right : result = left / (right / 100.0);
                                 operator = "*";
                             }
                         }
