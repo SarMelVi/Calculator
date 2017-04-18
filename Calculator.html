@@ -30,6 +30,9 @@
             margin-right: .7em;
             margin-bottom: .7em;
         }
+        #zero {
+            width: 11em!important;
+        }
         #inputDisplay input {
             width: 5.6em;
             height: 2em;
@@ -53,10 +56,8 @@
             width: 10em;
             font-size: 2em;
             text-align: center;
-            margin-left: 6em;
             margin-bottom: 1em;
             color: white;
-
         }
 
     </style>
@@ -67,17 +68,19 @@
         <h1>Calculate This!</h1>
         <div id="errorMessage" class="hidden"></div>
         <div id="inputDisplay">
-            <input id="left" type="number">
+            <input id="left" type="text">
             <input id="center" type="text">
-            <input id="right" type="number">
+            <input id="right" type="text">
         </div>
         <br>
         <div id = "buttonDisplay">
 
-            <button id="zero" class="btn btn-default number" type="button">0</button>
+
             <button id="clear" class="btn btn-default" type="button">C</button>
-            <button id="equals" class="btn btn-default" type="button">=</button>
+            <button id="posNeg" class="btn btn-default number" type="button">+-</button>
+            <button id="percent" class="btn btn-default" type="button">%</button>
             <button id="divide" class="btn btn-default operator" type="button">/</button>
+            <br>
 
             <button id="four" class="btn btn-default number" type="button">4</button>
             <button id="five" class="btn btn-default number" type="button">5</button>
@@ -97,14 +100,10 @@
             <button id="add" class="btn btn-default operator" type="button">+</button>
             <br>
 
-
-
-
-
             <button id="zero" class="btn btn-default number" type="button">0</button>
-            <button id="clear" class="btn btn-default" type="button">C</button>
+            <button id="decimal" class="btn btn-default number" type="button">.</button>
             <button id="equals" class="btn btn-default" type="button">=</button>
-            <button id="divide" class="btn btn-default operator" type="button">/</button>
+
 
         </div>
     </div>
@@ -121,27 +120,59 @@
         var btns = document.getElementsByClassName('number');
         var trueornot = true;
         var errorMessage =  document.getElementById("errorMessage");
+        var operator = "";
+        var OKEqualsEquals = false;
+        var equalsEqualsNumber = 0;
+
 
         for (var i = 0; i < btns.length; i++) {
             btns[i].addEventListener("click", function () {
+
                 if (!input2.value) {
-                    input1.value += parseInt(this.innerText);
+                    if ((parseInt(input1.value) >= 0) && this.innerText == "+-") {
+                        input1.value = "-" + input1.value;
+                    }
+                    else if ((parseInt(input1.value) < 0) && this.innerText == "+-") {
+                        input1.value = (parseFloat(input1.value) * -1);
+                    }
+                    else {
+
+                        input1.value += this.innerText;
+
+                    }
                 }
 
                 else {
-                    input3.value += parseInt(this.innerText);
-                }
-            })
+
+                        if ((parseInt(input3.value) >= 0) && this.innerText == "+-"){
+                            input3.value = "-" + input3.value;
+                        }
+                        else if ((parseInt(input1.value) < 0) && this.innerText == "+-"){
+                            input3.value = (parseFloat(input3.value) * -1);
+                        }
+                        else {
+                            input3.value += this.innerText;
+                        }
+                    }
+
+            });
         }
+
+
+
         var clearbtn = document.getElementById("clear");
         clearbtn.addEventListener("click", function () {
             errorMessage.setAttribute("class", "hidden");
             trueornot = true;
+            calcPercent = false;
+            OKEqualsEquals = false;
+            equalsEqualsNumber = 0;
+            operator = "";
             input1.value = "";
             input2.value = "";
             input3.value = "";
 
-        })
+        });
 
         var operBtns = document.getElementsByClassName("operator");
 
@@ -151,54 +182,94 @@
                 input2.value = this.innerText;
             })
         }
+
+
+        var calcPercent = false;
+        var percentbtn = document.getElementById("percent");
+        percentbtn.addEventListener("click", function () {
+            calcPercent = true;
+        });
+
+
         var equalsbtn = document.getElementById("equals");
         equalsbtn.addEventListener("click", function () {
             var result = 0;
-            var left = parseInt(input1.value);
-            var right = parseInt(input3.value);
+            var left = parseFloat(input1.value);
+            var right = parseFloat(input3.value);
+
             errorMessage.setAttribute("class", "hidden");
 
-            if (!input1.value || !input3.value){
+
+            if ((!input1.value || !input3.value) && OKEqualsEquals === false){
                 errorMessage.innerHTML = "Must Enter digits on left and right";
                 errorMessage.setAttribute("class", "show");
-                errorMessage.style.height = "3.5em";
-
+                errorMessage.style.width = "15em";
+                errorMessage.style.marginLeft = "14%";
             }
             else {
 
-                if (input2.value == "+") {
-                    result = left + right;
-                }
-                else if (input2.value == "-") {
-                    result = input1.value - input3.value;
-                }
-                else if (input2.value == "*") {
-                    result = input1.value * input3.value;
-                }
+                if (!input3.value) {
 
-                else if (input2.value == "/") {
-                    if (input3.value == 0 || input1.value == 0) {
-
-                        errorMessage.innerHTML = "Can't divide by zero";
-                        errorMessage.setAttribute("class", "show");
-                        errorMessage.style.height = "2em";
-
-                    }
-                    else {
-                        result = left / right;
+                    switch (operator) {
+                        case "+":
+                            console.log("plus");
+                            result = left + equalsEqualsNumber;
+                            break;
+                        case "-":
+                            result = left - equalsEqualsNumber;
+                            break;
+                        case "*":
+                            result = left * equalsEqualsNumber;
+                            break;
+                        case "/":
+                            result = left/equalsEqualsNumber;
+                            break;
                     }
                 }
+                else
+                    {
+                        equalsEqualsNumber = left;
 
-                else {
+                        if (input2.value == "+") {
+                            calcPercent === false ? result = left + right : result = left + ((right / left) * 100);
+                            operator = "+";
+
+                        }
+                        else if (input2.value == "-") {
+                            calcPercent === false ? result = left - right : result = left - ((right / left) * 100);
+                            operator = "-";
+                        }
+                        else if (input2.value == "*") {
+                            calcPercent === false ? result = left * right : result = left * ((right / left) * 100);
+                            operator = "*";
+                        }
+
+                        else if (input2.value == "/") {
+                            if (input3.value == 0 || input1.value == 0) {
+
+                                errorMessage.innerHTML = "You can't divide by zero";
+                                errorMessage.setAttribute("class", "show");
+                                errorMessage.style.width = "11em";
+                                errorMessage.style.marginLeft = "20%";
+                            }
+                            else {
+                                calcPercent === false ? result = left / right : result = left / ((right / left) * 100);
+                                operator = "*";
+                            }
+                        }
+
+                        else {
+                        }
+
+                    }
                 }
-            }
 
+            calcPercent = false;
+            OKEqualsEquals = true;
             input1.value = result;
             input2.value = null;
             input3.value = null;
         });
-
-
 
 
 
