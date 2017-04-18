@@ -35,6 +35,7 @@
 <button id="clear" class="btn btn-default" type="button">C</button>
 <button id="equals" class="btn btn-default" type="button">=</button>
 <button id="divide" class="btn btn-default operator" type="button">/</button>
+<div id="errorMessage"></div>
 
 <script>
     (function () {
@@ -92,8 +93,10 @@
             }
 
             else if (input2.value == "/") {
-                if (input3.value == 0){
-                    input1.innerHTML = "Can't divide by Zero";
+                if (input3.value == 0 || input1.value == 0){
+                var errorMessage =  document.getElementById("errorMessage");
+                errorMessage.innerHTML = "Can't divide by zero";
+                    console.log("hitt this statemetn")
                 }
                 else {
                     result = left / right;
