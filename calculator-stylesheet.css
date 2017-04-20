@@ -1,0 +1,49 @@
+body {
+    width: 100%;
+    height: 100%;
+    background-image: url("fabian-blank-78637.jpg");
+    background-size: cover;
+    background-position: center center;
+    min-height: 100%;
+}
+
+
+
+.container {
+    float: left;
+}
+
+.box {
+    border-color: #FCA69F;
+    color: darkseagreen;
+    font-size: small;
+    box-sizing: content-box;
+    margin-bottom: 2%;
+    border-radius: 20%;
+    padding: 2.5%;
+}
+
+#calculator {
+    height: 50%;
+    width: 50%;
+    margin: 20%;
+}
+
+.row {
+    width: auto;
+    margin: 10px;
+}
+
+.btn-default {
+    background-color: #92E5E4!important;
+    width: auto!important;
+   font-size: 16px!important;
+    text-align: center!important;
+    padding: 20px 25px!important;
+    border-radius: 20%!important;
+    margin: .7%;
+    size: 15px;
+    color: #000;
+    border-color: #FCA69F!important;
+
+}
