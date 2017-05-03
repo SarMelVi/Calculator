@@ -4,128 +4,95 @@
     <meta charset="UTF-8">
     <title>Calculator</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
     <style rel="stylesheet">
         body {
             background-image: url("img/numbers-wallpaper.jpg");
 
 
         }
-        .jumbotron {
-            margin-top: 10em;
-            margin-left: 30em;
-            width: 50%;
+        #mainWrapper {
+            margin-top: 10vw;
+            margin-left: 25vw;
+            min-width: 300px;
+            min-height: 400px;
+            width: 40%;
             background-color: darkgray;
+            border-radius: 2%;
         }
-        .container{
-            margin-left: 4em;
+       .container {
+           margin-left: 7.5vw;
+       }
+        #titleDiv {
+            margin-bottom: 2%;
+            margin-top: 1vw!important;
+            min-width: 221px;
+            width: 75%;
+            font-size: 3.5vw;
+            font-weight: 500;
+            background-color: whitesmoke;
+            border: groove .03vw lightgrey;
+            box-shadow: 0 0 .02vw .01vw;
+            border-radius: 2%;
+            text-align: center;
         }
-        #buttonDisplay {
-            margin-left: 10.5em;
 
-        }
         #buttonDisplay button{
-            width: 5em;
-            height: 5em;
-            margin-right: .7em;
-            margin-bottom: .7em;
+            width: 5.3vw;
+            height: 5.3vw;
+            min-width: 50px;
+            min-height: 50px;
+            margin-right: .55vw;
+            margin-bottom: .5vw;
+            box-shadow: .05vw .05vw .1vw .1vw #000;
+            background-color: #fff;
+            border-radius: 4%;
         }
         #zero {
-            width: 11em!important;
+            width: 11.5vw!important;
+            min-width: 106.5px!important;
         }
         #inputDisplay input {
-            width: 5.6em;
-            height: 2em;
+            width: 7.5vw;
+            height: 3vw;
+            min-width: 67px;
+            min-height: 30px;
             font-size: 140%;
             margin: 0;
-
-
+            box-shadow: .05vw .05vw .1vw .1vw #000 !important;
         }
         #inputDisplay {
-            margin-left: 10.3em;
             display: table;
             border-collapse: collapse;
-        }
-        h1 {
-            margin-left: 1.6em;
-            margin-bottom: .5em;
-            width: 6.9em;
-            background-color: whitesmoke;
-            border: groove .01em lightgrey;
         }
 
         #errorMessage {
             background-color: lightcoral;
-            height: 2em;
-            width: 10em;
-            font-size: 2em;
-            text-align: center;
-            margin-bottom: 1em;
+            height: 3vw;
+            width: 90%;
+            font-size: 2vw;
+            margin-bottom: 1vw;
             color: white;
+            display: none;
+        }
+        @media screen and (max-width: 700px){
+            #mainWrapper {
+                margin-left: 0!important;
+            }
         }
 
-        @media only screen and (max-width: 1000px) {
-            .jumbotron {
-                margin-top: 5em;
-                margin-left: 6em;
-                width: 60%;
-                background-color: darkgray;
-            }
-            .container{
-                margin-left: 1em;
-            }
-            #buttonDisplay {
-                margin-left: 1.5em;
-
-            }
-            #buttonDisplay button{
-                width: 2em;
-                height: 2em;
-                margin-right: .2em;
-                margin-bottom: .2em;
-            }
-            #zero {
-                width: 4.5em!important;
-            }
-            #inputDisplay input {
-                width: 3.5em;
-                height: 2em;
-                font-size: 100%;
-                margin: 0;
-
-
-            }
-            #inputDisplay {
-                margin-left: 1.2em;
-            }
-            h1 {
-                margin-left: .5em;
-                margin-bottom: .2em;
-                width: 7em;
-                font-size: 2em;
-
-
-            }
-
-            #errorMessage {
-                background-color: lightcoral;
-                height: 2em;
-                width: 5em;
-                font-size: 1em;
-                text-align: center;
-                margin-bottom: .5em;
-                color: white;
-            }
-        }
 
 
     </style>
 </head>
 <body>
-<div class="jumbotron">
-    <div class="container">
-        <h1>Calculate This!</h1>
-        <div id="errorMessage" class="hidden"></div>
+<div id="mainWrapper">
+    <div class="container col=xs-12">
+        <div id="titleDiv">
+        Calculate This!
+        </div>
+        <div id="errorMessage"></div>
         <div id="inputDisplay">
             <input id="left" type="text">
             <input id="center" type="text">
@@ -250,7 +217,7 @@
 
         var clearbtn = document.getElementById("clear");
         clearbtn.addEventListener("click", function () {
-            errorMessage.setAttribute("class", "hidden");
+            errorMessage.style.display = "none";
             trueornot = true;
             calcPercent = false;
             OKEqualsEquals = false;
@@ -289,14 +256,12 @@
             var right = parseFloat(input3.value);
             hasDecimal = false;
 
-            errorMessage.setAttribute("class", "hidden");
+            errorMessage.style.display = "none";
 
 
             if ((!input1.value || !input3.value) && OKEqualsEquals === false){
                 errorMessage.innerHTML = "Must Enter digits on left and right";
-                errorMessage.setAttribute("class", "show");
-                errorMessage.style.width = "15em";
-                errorMessage.style.marginLeft = "14%";
+                errorMessage.style.display = "inline-block";
             }
             else {
 
@@ -340,9 +305,7 @@
                             if (input3.value == 0 || input1.value == 0) {
 
                                 errorMessage.innerHTML = "You can't divide by zero";
-                                errorMessage.setAttribute("class", "show");
-                                errorMessage.style.width = "11em";
-                                errorMessage.style.marginLeft = "20%";
+                                errorMessage.style.display = "inline-block";
                             }
                             else {
                                 calcPercent === false ? result = left / right : result = left / (right / 100.0);
